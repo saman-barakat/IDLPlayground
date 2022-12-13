@@ -1,0 +1,80 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server"
+  version: "1.0.0"
+  title: "Swagger Example"
+host: "localhost:8080"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /combinatorial2:
+    get:
+      parameters:
+        - name: "p1"
+          in: "query"
+          required: false
+          type: "boolean"
+        - name: "p2"
+          in: "query"
+          required: false
+          type: "integer"
+        - name: "p3"
+          in: "query"
+          required: false
+          type: "integer"
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        - name: "p4"
+          in: "query"
+          required: false
+          type: "integer"
+        - name: "p5"
+          in: "query"
+          required: false
+          type: "integer"
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        - name: "p6"
+          in: "query"
+          required: false
+          type: "boolean"
+        - name: "p7"
+          in: "query"
+          required: false
+          type: "integer"
+        - name: "p8"
+          in: "query"
+          required: false
+          type: "integer"
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        - name: "p9"
+          in: "query"
+          required: false
+          type: "integer"
+        - name: "p10"
+          in: "query"
+          required: false
+          type: "integer"
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+      responses:
+        default:
+          description: "Default"

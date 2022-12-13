@@ -1,0 +1,229 @@
+/youtube/v3/search:
+    get:
+      description: Retrieves a list of search resources
+      operationId: youtube.search.list
+      parameters:
+        - description: The *part* parameter specifies a comma-separated list of one or more search resource properties that the API response will include. Set the parameter value to snippet.
+          explode: true
+          in: query
+          name: part
+          required: true
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: Filter on resources belonging to this channelId.
+          in: query
+          name: channelId
+          schema:
+            type: string
+        - description: Add a filter on the channel search.
+          in: query
+          name: channelType
+          schema:
+            enum:
+              - channelTypeUnspecified
+              - any
+              - show
+            type: string
+        - description: Filter on the livestream status of the videos.
+          in: query
+          name: eventType
+          schema:
+            enum:
+              - none
+              - upcoming
+              - live
+              - completed
+            type: string
+        - description: Search owned by a content owner.
+          in: query
+          name: forContentOwner
+          schema:
+            type: boolean
+        - description: Restrict the search to only retrieve videos uploaded using the project id of the authenticated user.
+          in: query
+          name: forDeveloper
+          schema:
+            type: boolean
+        - description: Search for the private videos of the authenticated user.
+          in: query
+          name: forMine
+          schema:
+            type: boolean
+        - description: Filter on location of the video
+          in: query
+          name: location
+          schema:
+            type: string
+        - description: Filter on distance from the location (specified above).
+          in: query
+          name: locationRadius
+          schema:
+            type: string
+        - description: The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.
+          in: query
+          name: maxResults
+          schema:
+            maximum: 50
+            minimum: 0
+            type: integer
+        - description: "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."
+          in: query
+          name: onBehalfOfContentOwner
+          schema:
+            type: string
+        - description: Sort order of the results.
+          in: query
+          name: order
+          schema:
+            enum:
+              - searchSortUnspecified
+              - date
+              - rating
+              - viewCount
+              - relevance
+              - title
+              - videoCount
+            type: string
+        - description: The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.
+          in: query
+          name: pageToken
+          schema:
+            type: string
+        - description: Filter on resources published after this date.
+          in: query
+          name: publishedAfter
+          schema:
+            type: string
+        - description: Filter on resources published before this date.
+          in: query
+          name: publishedBefore
+          schema:
+            type: string
+        - description: Textual search terms to match.
+          in: query
+          name: q
+          schema:
+            type: string
+        - description: Display the content as seen by viewers in this country.
+          in: query
+          name: regionCode
+          schema:
+            type: string
+        - description: Search related to a resource.
+          in: query
+          name: relatedToVideoId
+          schema:
+            type: string
+        - description: Return results relevant to this language.
+          in: query
+          name: relevanceLanguage
+          schema:
+            type: string
+        - description: Indicates whether the search results should include restricted content as well as standard content.
+          in: query
+          name: safeSearch
+          schema:
+            enum:
+              - safeSearchSettingUnspecified
+              - none
+              - moderate
+              - strict
+            type: string
+        - description: Restrict results to a particular topic.
+          in: query
+          name: topicId
+          schema:
+            type: string
+        - description: Restrict results to a particular set of resource types from One Platform.
+          explode: true
+          in: query
+          name: type
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: Filter on the presence of captions on the videos.
+          in: query
+          name: videoCaption
+          schema:
+            enum:
+              - videoCaptionUnspecified
+              - any
+              - closedCaption
+              - none
+            type: string
+        - description: Filter on videos in a specific category.
+          in: query
+          name: videoCategoryId
+          schema:
+            type: string
+        - description: Filter on the definition of the videos.
+          in: query
+          name: videoDefinition
+          schema:
+            enum:
+              - any
+              - standard
+              - high
+            type: string
+        - description: Filter on 3d videos.
+          in: query
+          name: videoDimension
+          schema:
+            enum:
+              - any
+              - 2d
+              - 3d
+            type: string
+        - description: Filter on the duration of the videos.
+          in: query
+          name: videoDuration
+          schema:
+            enum:
+              - videoDurationUnspecified
+              - any
+              - short
+              - medium
+              - long
+            type: string
+        - description: Filter on embeddable videos.
+          in: query
+          name: videoEmbeddable
+          schema:
+            enum:
+              - videoEmbeddableUnspecified
+              - any
+              - "true"
+            type: string
+        - description: Filter on the license of the videos.
+          in: query
+          name: videoLicense
+          schema:
+            enum:
+              - any
+              - youtube
+              - creativeCommon
+            type: string
+        - description: Filter on syndicated videos.
+          in: query
+          name: videoSyndicated
+          schema:
+            enum:
+              - videoSyndicatedUnspecified
+              - any
+              - "true"
+            type: string
+        - description: Filter on videos of a specific type.
+          in: query
+          name: videoType
+          schema:
+            enum:
+              - videoTypeUnspecified
+              - any
+              - movie
+              - episode
+            type: string
