@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server"
+  version: "1.0.0"
+  title: "Swagger Example"
+host: "localhost:8080"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /combinatorial1:
+    get:
+      parameters:
+        - name: "p1"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "p2"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "p3"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "p4"
+          in: "query"
+          required: true
+          type: "string"
+        - name: "p5"
+          in: "query"
+          required: true
+          type: "string"
+      responses:
+        default:
+          description: "Default"
+ 

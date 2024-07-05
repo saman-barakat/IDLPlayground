@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.us.isa.idl.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: es.us.isa.idl.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202308301526
+Bundle-SymbolicName: es.us.isa.idl.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.us.isa.idl,org.eclipse.xtext.testing,org.eclipse.xtex
+ t.xbase.testing,org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",org.junit.
+ jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: es.us.isa.idl.tests;x-internal=true
+

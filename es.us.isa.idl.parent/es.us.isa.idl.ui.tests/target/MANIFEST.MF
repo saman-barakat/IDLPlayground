@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.us.isa.idl.ui.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: es.us.isa.idl.ui.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202308301523
+Bundle-SymbolicName: es.us.isa.idl.ui.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.us.isa.idl.ui,org.eclipse.xtext.testing,org.eclipse.x
+ text.ui.testing,org.eclipse.xtext.xbase.testing,org.eclipse.xtext.xbase
+ .ui.testing,org.eclipse.core.runtime,org.eclipse.ui.workbench;resolutio
+ n:=optional
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",org.junit.
+ jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: es.us.isa.idl.ui.tests;x-internal=true
+

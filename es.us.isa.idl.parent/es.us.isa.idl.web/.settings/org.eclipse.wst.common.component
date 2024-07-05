@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-            
-    
     <wb-module deploy-name="es.us.isa.idl.web-1.0.0-SNAPSHOT">
-                        
-        
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                        
-        
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
-                        
-        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-                        
-        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src-gen"/>
-                        
-        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/xtend-gen"/>
         <dependent-module archiveName="es.us.isa.idl-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/es.us.isa.idl/es.us.isa.idl">
             <dependency-type>uses</dependency-type>
@@ -23,15 +11,7 @@
         <dependent-module archiveName="es.us.isa.idl.ide-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/es.us.isa.idl.ide/es.us.isa.idl.ide">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                        
-        
         <property name="context-root" value="es.us.isa.idl.web"/>
-                        
-        
         <property name="java-output-path" value="/es.us.isa.idl.web/target/classes"/>
-                    
-    
     </wb-module>
-        
-
 </project-modules>

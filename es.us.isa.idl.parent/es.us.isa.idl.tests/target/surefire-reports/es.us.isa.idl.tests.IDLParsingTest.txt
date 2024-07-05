@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: es.us.isa.idl.tests.IDLParsingTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.928 s <<< FAILURE! - in null
+es.us.isa.idl.tests.IDLParsingTest.loadModel  Time elapsed: 0.322 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected errors: XtextSyntaxDiagnostic: null:1 no viable alternative at input 'Hello', XtextSyntaxDiagnostic: null:1 no viable alternative at input 'Xtext' ==> expected: <true> but was: <false>
+	at es.us.isa.idl.tests.IDLParsingTest.loadModel(IDLParsingTest.java:41)
+

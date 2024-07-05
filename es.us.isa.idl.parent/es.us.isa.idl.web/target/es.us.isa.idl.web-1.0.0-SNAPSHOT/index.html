@@ -1,0 +1,534 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <title>IDL</title>
+    <link rel="stylesheet" type="text/css" href="xtext/2.30.0/xtext-ace.css" />
+
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css"
+  />
+ 
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .headerLine {
+	border-top: 4px solid;
+	border-color: #5d2f86;
+	border-image-slice: 1;
+}
+
+.btnStyle {
+  padding: 0.5rem;
+  color: white;
+  background-color: #5d2f86;
+  border-color: #5d2f86;
+  text-decoration: none;
+}
+
+.btnOutlineStyle {
+  padding: 0.5rem;
+  color: #5d2f86;
+  background-color: white;
+  border-color: #5d2f86;
+  text-decoration: none;
+}
+
+.btnStyle:hover {
+  
+  color: white;
+  background-color: #5d2f86;
+  border-color: #5d2f86;
+}
+
+.btnOutlineStyle:hover {
+  
+  color: white;
+  background-color: #5d2f86;
+  border-color: #5d2f86;
+}
+.btnMenu {
+  font-size: large;
+}
+.btnMenu:hover {
+  color: #5d2f86; 
+}
+
+.custom-modal-dialog {
+      max-width: 800px; /* Set the desired width here */
+    }
+    </style>
+    <script src="/webjars/js-yaml/4.1.0/dist/js-yaml.min.js"></script>
+    <script src="/webjars/requirejs/2.3.6/require.min.js"></script>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+
+  <body>
+<div class="headerLine"></div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://isa-group.github.io/IDL/" style="text-decoration: none; font-size: x-large;font-weight: bold; margin-left: 1rem;">IDL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="btn btnMenu" role="button" aria-current="page" href="https://isa-group.github.io/IDL/docs/idl/introduction/" style="text-decoration: none;">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class=" btn btnMenu" role="button" href="https://isa-group.github.io/IDL/publications/" style="text-decoration: none;">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="  btn btnMenu" role="button" href="https://isa-group.github.io/IDL/team/" style="text-decoration: none;">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class=" btn btnMenu" role="button" href="#" style="text-decoration: none;">Playground</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- Navbar -->
+    <main>
+      <div class="container">
+        <div class="row" id="messageBoxID"></div>
+
+        <div class="row justify-content-md-center">
+          <div class="col-8">
+            <!-- Form starts -->
+            <form id="idlFormID">
+
+              <div class="mb-3">
+                <div class="form-group">
+                  <input
+                    type="hidden"
+                    name="entry"
+                    value="oas"
+                    id="specificationTypeID"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="APIID" class="form-label"
+                    >Select OAS*</label
+                  > 
+                  <select class="form-select mb-3 form-control" id="APIID">
+                    
+                    <option hidden selected disable value=""></option>
+                    <option value="Yelp">Yelp Business Search</option>
+                    <option value="YouTube">YouTube</option>
+                    <option value="SampleAPI">Sample API</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="operationTypeID" class="form-label"
+                    >Select an operation*</label
+                  >
+                  <select
+                    class="form-select mb-3 form-control"
+                    id="operationID"
+                  >
+                  <option hidden selected disable value=""></option>
+                     
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="operationTypeID" class="form-label"
+                    >IDL Dependencies*</label
+                  >
+              <div class="h-20 container-fluid" id="idlEditorContainerID">
+                <div
+                  style="height: 250px"
+                  id="xtext-editor"
+                  data-editor-xtext-lang="idl"
+                  data-editor-show-error-dialogs="true"
+                ></div>
+                <div class="invalid-feedback">Please check the IDL editor.</div>
+              </div>
+              </div>
+            </div>
+              
+              <div class="text-center mb-4">
+                 
+                <button class="btn btn-lg mb-2 btnStyle col-4 " id="analyzeBtnID" >
+                  Analyze
+                </button>
+                <a class="btn  btn-lg mb-2 btnOutlineStyle col-4 " style="text-decoration: none;" id="viewOASBtnID" href="" target="_blank">
+                  View OAS
+                </a>
+               
+            </div>
+           </form>
+          </div>
+          <!-- Form ends -->
+
+        </div>
+
+
+        
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+          <div class="modal-dialog custom-modal-dialog">
+            <div class="modal-content">
+        
+              <!-- Modal Header -->
+              <div class="modal-header" id="modalHeaderID">
+                <h4 class="modal-title">Analysis Result</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+        
+              <!-- Modal body -->
+              <div class="modal-body" id="modalBodyID">
+                
+              </div>
+        
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+<!-- End of modal-->
+
+
+        <footer class="pt-3 mt-4 text-muted border-top">&copy; 2023</footer>
+      </div>
+    </main>
+    <script type="text/javascript">
+      var baseUrl = window.location.pathname;
+      var fileIndex = baseUrl.indexOf("index.html");
+      if (fileIndex > 0) baseUrl = baseUrl.slice(0, fileIndex);
+      require.config({
+        baseUrl: baseUrl,
+        paths: {
+          jquery: "webjars/jquery/3.6.0/jquery.min",
+          "ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
+          "xtext/xtext-ace": "xtext/2.30.0/xtext-ace",
+        },
+      });
+
+      require(["webjars/ace/1.3.3/src/ace"], function () {
+        require(["xtext/xtext-ace"], function (xtext) {
+          var editor = xtext.createEditor({
+            baseUrl: baseUrl,
+            syntaxDefinition: "xtext-resources/generated/mode-idl",
+            validate: true,
+          });
+
+ 
+
+          $(document).ready(function () {
+            var oas = "";
+            var methodType = "";
+            var operationPath = "";
+
+            $("#APIID").val("");
+            $("#operationID").prop("disabled", true);
+
+            $("#xtext-editor").children().prop('disabled',true);
+            
+            $("#viewOASBtnID").addClass('disabled');
+            $("#analyzeBtnID").prop("disabled", true);
+            
+
+            $("#APIID").change(function () {
+
+              var apiName = $("#APIID option:selected").val();
+
+              if (apiName == "Yelp") 
+             oas = "https://raw.githubusercontent.com/saman-barakat/OAS/main/yelp/openapi.yaml";
+             
+             if (apiName == "SampleAPI") 
+              oas = "https://raw.githubusercontent.com/saman-barakat/OAS/main/test_suite/openapi.yaml"; 
+
+              if (apiName == "YouTube") 
+              oas = "https://raw.githubusercontent.com/saman-barakat/OAS/main/youtube/openapi.yaml";
+ 
+
+              $("#viewOASBtnID").removeClass('disabled')
+              $("#analyzeBtnID").prop("disabled", true);
+
+              $("#viewOASBtnID").attr("href", oas);
+
+              $("#xtext-editor").children().prop('disabled',false);
+              $("#operationID").prop("disabled", false);
+              
+              $("#xtext-editor").removeClass("is-invalid");
+              getOASOperations(oas);             
+               
+            });
+
+            $("#operationID").change(function () {
+              
+               var operation = $("#operationID option:selected").val();
+               
+               operationType = operation.split(":")[0];
+                operationPath = operation.split(":")[1];
+
+               getIDL(oas, operationPath, operationType);
+               getIDL(oas, operationPath, operationType);
+
+               $("#analyzeBtnID").prop("disabled", false);
+               $("#xtext-editor").removeClass("is-invalid");
+            });
+
+  
+            $("#analyzeBtnID").click(function (event) {
+              event.preventDefault();
+
+              var valid = true;
+              var uri = "http://192.168.20.39:8080/api/operationAnalysis";
+
+              var editorLines = editor.selection.doc.$lines;
+              var errors = editor.xtextServices.editorContext._annotations;
+              var lines = [];
+
+              if (editorLines != "") {
+                for (i = 0; i < editorLines.length; i++) {
+                  var line = $.trim(editorLines[i]);
+                  if (line != "") lines.push(line);
+                }
+              }
+      
+
+              if (oas == "") {
+                $("#APIID").addClass("is-invalid");
+                valid = false;
+              } else $("#APIID").removeClass("is-invalid");
+
+              if (operationPath == "" || operationType == "") {
+                $("#operationID").addClass("is-invalid");
+                valid = false;
+              } else $("#operationID").removeClass("is-invalid");
+
+              // Check The editor
+              if (errors.length > 0 || lines.length === 0) {
+                $("#xtext-editor").addClass("is-invalid");
+                valid = false;
+              } else $("#xtext-editor").removeClass("is-invalid");
+
+              $("#modalHeaderID").empty();
+              $("#modalHeaderID").removeClass();
+              $("#modalHeaderID").append(
+                          "<h4 class='modal-title'>Analysis Result</h4>"
+                        );
+                        
+
+              if (valid) {
+                callRESTAPI(uri, oas, operationType, operationPath, lines);
+              } else {
+                $("#modalHeaderID").addClass("modal-header alert-danger");
+                $("#modalHeaderID").empty();
+                $("#modalHeaderID").append(
+                          "<h4 class='modal-title'>Error</h4>"
+                        );
+                $("#modalBodyID").empty();
+                $("#modalBodyID").append(
+                  "<p class='text-danger'>Please fill all the required fields</p>"
+                );
+              
+                $("#myModal").modal("show");
+              }
+            });
+
+            // End of Analysis Operations
+          }); // End of $(document).ready    
+
+          function getIDL(oas, path, methodType) {
+
+          $.ajax({
+                  url: "/GetIDLServlet",
+                  data: {
+                    apiSpecification: oas,
+                    path: path,
+                    methodType: methodType
+                  
+                  },
+                  type: "post",
+                  success: function (data, textStatus, xhr) {
+                       
+                   data = JSON.parse(data) 
+                  editor.selection.doc.removeFullLines(
+                0,
+                editor.selection.doc.$lines.length
+              );
+             
+              for(i = 0; i< data.length; i++){
+    
+                      editor.selection.doc.$lines[i] = data[i]; 
+                    } 
+                  },
+                  error: function (jqXHR) {
+                     
+                    $("#modalHeaderID").removeClass();
+                        $("#modalHeaderID").empty();
+                        $("#modalHeaderID").append(
+                          "<h4 class='modal-title'>Error</h4>"
+                        );
+                        $("#modalHeaderID").addClass("modal-header alert-danger");
+
+                        $("#modalBodyID").empty();
+                        $("#modalBodyID").append(
+                          "<h4>" + jqXHR.statusText +"</h4>"
+                        );
+
+                        $("#myModal").modal("show");
+                  }
+                }); 
+              }
+
+          function getOASOperations(oas) {
+             
+            editor.selection.doc.removeFullLines(0, editor.selection.doc.$lines.length);
+
+            $.ajax({
+                  url: "/GetOASOperationsServlet",
+                  data: {
+                    apiSpecification: oas
+                  },
+                  type: "post",
+                  success: function (data, textStatus, xhr) {
+              
+                    data = data.replace('[','');
+                    data = data.replace(']','');
+                    var paths = data.split(',');
+                    $("#operationID").empty();
+                    $("#operationID").append("<option hidden selected value=''></option>");
+                    for(var element in paths){
+                      var path = paths[element].split(':');
+                      $("#operationID").append("<option value='"+ paths[element] +"'>" + paths[element].replace('/',' ') + "</option>");
+                    }
+                  },
+                  error: function (jqXHR) {
+                    
+                    $("#modalHeaderID").removeClass();
+                        $("#modalHeaderID").empty();
+                        $("#modalHeaderID").append(
+                          "<h4 class='modal-title'>Error</h4>"
+                        );
+                        $("#modalHeaderID").addClass("modal-header alert-danger");
+
+                        $("#modalBodyID").empty();
+                        $("#modalBodyID").append(
+                          "<h4" + jqXHR.statusText +"</h4>"
+                        );
+
+                        $("#myModal").modal("show");
+                  }
+                }); 
+        }
+       
+          function callRESTAPI(uri, oas, operationType, operationPath, lines){
+            $.ajax({
+                  url: "/IntegrateServlet",
+                  data: {
+                    uri: uri,
+                    apiSpecification: oas,
+                    operationType: operationType,
+                    operationPath: operationPath,
+                    idl: lines,
+                  },
+                  type: "post",
+                  success: function (data, textStatus, xhr) {
+                    
+                      data = JSON.parse(data);                      
+
+                      if (data.valid) {
+                        $("#modalHeaderID").removeClass();
+                        $("#modalHeaderID").addClass("modal-header alert-success");
+
+                        $("#modalBodyID").empty();
+                        $("#modalBodyID").append(
+                          "<h4 class='text-success'>The specification is valid!</h4>"
+                        );
+
+                      } else {
+
+                      analysisResult = data.analysisResult;
+                     // deadParameters = analysisResult.DeadParameters;
+                     // falseOptionalParameters = analysisResult.FalseOptionalParameters;
+                     // conflicts = analysisResult.IDLConflicts;
+                      
+                      $("#modalHeaderID").removeClass();
+                      $("#modalHeaderID").addClass("modal-header alert-danger");
+
+                      $("#modalBodyID").empty();
+                                            
+                      $("#modalBodyID").append(
+                        "<h4 class='text-danger'>The specification is invalid!</h4>" + "<br>"
+                      );
+
+                      $("#modalBodyID").append(analysisResult);
+
+
+                      /*  if(conflicts != null){
+                        $("#modalBodyID").append(
+                          "<b>Conflict IDL: </b>" + "<br>"
+                        );
+
+                        for (var i = 0; i < conflicts.length; i++) {
+                          $("#modalBodyID").append(
+                           "<b>* </b>" + conflicts[i] + "<br>"
+                          );
+
+                        }
+                        $("#modalBodyID").append("<br>");
+                      }
+
+                        if(deadParameters != null)
+                        $("#modalBodyID").append(
+                          "<b>Dead Parameters: </b>" + deadParameters + "<br>"
+                        );
+
+                        if(falseOptionalParameters != null)
+                        $("#modalBodyID").append(
+                          "<b>False Optional Parameters: </b>"  + falseOptionalParameters + "<br>"
+                        );
+*/
+                      }
+                      
+
+                      $("#myModal").modal("show");
+ 
+                  },
+                  error: function (jqXHR) {
+                    
+                        $("#modalHeaderID").removeClass();
+                        $("#modalHeaderID").empty();
+                        $("#modalHeaderID").append(
+                          "<h4 class='modal-title'>Error</h4>"
+                        );
+                        $("#modalHeaderID").addClass("modal-header alert-danger");
+
+                        $("#modalBodyID").empty();
+                        $("#modalBodyID").append(
+                          "<h4>" + jqXHR.statusText +"</h4>"
+                        );
+
+                        $("#myModal").modal("show");
+
+
+                  }
+                }); // End of AJAX
+        }
+      });
+      });
+    </script>
+  </body>
+</html>

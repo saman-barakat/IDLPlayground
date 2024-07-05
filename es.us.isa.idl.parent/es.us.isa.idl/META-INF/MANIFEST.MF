@@ -8,23 +8,23 @@ Bundle-SymbolicName: es.us.isa.idl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.equinox.common;bundle-version="3.16.0",
  org.eclipse.emf.ecore,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.xtext.util,
  org.eclipse.emf.common,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: es.us.isa.idl.idl.util,
  es.us.isa.idl.services,
  es.us.isa.idl.scoping,
- es.us.isa.idl.parser.antlr.internal,
  es.us.isa.idl.idl,
- es.us.isa.idl.parser.antlr,
  es.us.isa.idl.idl.impl,
  es.us.isa.idl.generator,
  es.us.isa.idl,
  es.us.isa.idl.serializer,
- es.us.isa.idl.validation
+ es.us.isa.idl.validation,
+ es.us.isa.idl.parser.antlr.internal,
+ es.us.isa.idl.parser.antlr
 Import-Package: org.apache.log4j

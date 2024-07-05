@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,12 @@ import io.swagger.v3.parser.core.models.ParseOptions;
 
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.UUID;
+
+ 
 
 /**
  * Servlet implementation class IntegrateServlet
@@ -82,6 +89,8 @@ public class IntegrateServlet extends HttpServlet {
 
 		return response;
 	}
+	
+	 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -98,7 +107,7 @@ public class IntegrateServlet extends HttpServlet {
 			String[] idl = request.getParameterValues("idl[]");
 			
 			List<String> newIDL = Arrays.asList(idl);
-
+			
 			ParseOptions parseOptions = new ParseOptions();
 			parseOptions.setFlatten(true);
 
@@ -121,9 +130,9 @@ public class IntegrateServlet extends HttpServlet {
 			this.uri = new URIBuilder(analysisURI)
 					.addParameter("operationPath", operationPath)
 					.addParameter("operationType", operationType)
-					.build();
+					.build();			
 			
-			HttpResponse<?> respons = callAnalyzer(jsonOutput);
+		 	HttpResponse<?> respons = callAnalyzer(jsonOutput);
 
 			writer.print(respons.body());
 

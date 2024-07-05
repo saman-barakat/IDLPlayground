@@ -1,0 +1,4 @@
+Or(location, latitude AND longitude);
+ZeroOrOne(open_now, open_at);
+offset + limit <= 1000;
+IF offset AND NOT limit THEN offset <= 980;

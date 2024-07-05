@@ -1,0 +1,8 @@
+es\us\isa\idl\web\IDLServlet.class
+es\us\isa\idl\web\IDLWebSetup.class
+es\us\isa\idl\web\ServerLauncher.class
+es\us\isa\idl\web\GetOASOperationsServlet.class
+es\us\isa\idl\web\IDLWebModule.class
+es\us\isa\idl\web\AnalysisResult.class
+es\us\isa\idl\web\GetIDLServlet.class
+es\us\isa\idl\web\IntegrateServlet.class
