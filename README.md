@@ -25,6 +25,8 @@ The IDLPlayground provides an intuitive interface for editing and evaluating IDL
 4. **Analyze the Specification**: Click the "Analyze" button to send the OAS and the IDL specification to the IDLReasoner web API for validation.
     - If the specification is valid, you will receive a success message.
     - If the specification is invalid, the web API will provide an explanation detailing the issues.
+      
+To see a detailed walkthrough on how to use IDLPlayground, check out our [YouTube video](https://www.youtube.com/watch?v=S33C2MA5CmM).
 
 ## License
 
